@@ -119,3 +119,95 @@ switch(traffic_ligth){
     default:
         console.log("Wait Patiently")
 }
+let message = "E";
+
+switch(message){
+    case "A":
+        console.log('Excellent');
+    break;
+    case "B":
+        console.log('Good');
+    break;
+    case "C":
+        console.log('Average');
+    break;
+    case "D":
+        console.log('Below Average');
+    break;
+    case "E":
+        console.log('Just Pass');
+    break;
+    default:
+        console.log('Fail')
+}
+
+let Drink = "C";
+
+switch(Drink){
+    case "C":
+        console.log('Coffee');
+    break;
+    case "T":
+        console.log('Tea');
+    break;
+    case "J":
+        console.log('Juice');
+    break;
+    case "W":
+        console.log('Water');
+    break;
+    default:
+        console.log('Nothing ordered')
+}
+
+let browser = "Yahoo";
+
+switch(browser){
+    case "Chrome":
+     console.log('Starting Chrome');
+    break;
+    case "Edge":
+        console.log("Starting Edge");
+    break;
+    case "Firefox":
+        console.log('Starting Firefox');
+    break;
+    case "Safari":
+        console.log('Starting Safari');
+    break;
+    default:
+        console.log('Other Browser Extensions');
+}
+
+let Area = 1;
+
+switch(Area){
+    case 1:
+        console.log('Area Of A Circle');
+    break;
+    case 2:
+        console.log('Area Of A Square');
+    break;
+    case 3:
+        console.log('Area Of A Triangle');
+    break;
+}
+
+let Language = "es";
+
+switch(Language){
+    case "en":
+        console.log('English');
+    break;
+    case "fr":
+        console.log('France');
+    break;
+    case "es":
+        console.log('Spain');
+    break;
+    case "de":
+        console.log('Germany');
+    break;
+    default:
+        console.log('')
+}
