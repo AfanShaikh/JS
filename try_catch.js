@@ -1,3 +1,13 @@
+/*CallBack Function*/
+function sec(){
+    console.log('Hello Im a call back function');
+}
+ main(sec);
+
+ function main(func){
+    func();
+ }
+//!Promise
 //!*SYNC*//
 let prom = new Promise(function(resolve,reject){
     let data = false;
