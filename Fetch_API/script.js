@@ -19,7 +19,8 @@ const apiCall = async () => {
     let data = await fetch(base_url);
     let res = await data.json();
     console.log("🚀 ~ res:", res);
-    res.map((els) => {
+    let limitedData = res.slice(0, 10);
+    limitedData.map((els) => {
     alert(
     ` body: ${els.body} 
     id: ${els.id} 

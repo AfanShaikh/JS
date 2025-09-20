@@ -14,22 +14,18 @@
 
     const apiCall = async () => {
             //handling promise with async way
-            try{
+        try{
             let data = await fetch(base_url);
             let res = await data.json();
             console.log('🚀 ~ res:', res);
-            let limitedData = res.slice(0, 5);
-            limitedData.map((els) => {
             alert(
-            `body: ${els.body}
-            email: ${els.email} 
-            id: ${els.id} 
-            name: ${els.name} 
-            postId: ${els.postId}`
-            );
-            });
-            }
-            catch (err){
+            `id: ${res.id} 
+            setup: ${res.setup} 
+            punchline: ${res.punchline} 
+            type: ${res.type}`
+            )
+        }
+        catch (err){
             console.log('🚀 ~ err:', err);
         }
     }
