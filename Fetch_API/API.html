@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>API Calling</h1>
+    <button onclick="apiCall()">Click</button>
+</body>
+<script>
+    const base_url = `https://official-joke-api.appspot.com/random_joke`;
+
+    const apiCall = async () => {
+            //handling promise with async way
+        try{
+            let data = await fetch(base_url);
+            let res = await data.json();
+            console.log('🚀 ~ res:', res);
+            alert(
+            `id: ${res.id} 
+            setup: ${res.setup} 
+            punchline: ${res.punchline} 
+            type: ${res.type}`
+            )
+        }
+        catch (err){
+            console.log('🚀 ~ err:', err);
+        }
+    }
+</script>
+</html>
