@@ -6,7 +6,8 @@ const infoFunc = () =>{
 const generator = async () => {
     const API = `https://official-joke-api.appspot.com/random_joke`;
 
-    const jokeDiv = document.getElementById("joke");
+    // const jokeDiv = document.getElementById("joke");
+    // console.log('🚀 ~ jokeDiv:', jokeDiv);  
 
     try{
         let res = await fetch(API);
@@ -18,12 +19,17 @@ const generator = async () => {
         let punchline = document.createElement("h3");
         let type = document.createElement("h3");
 
-        id.innerText = data.id;
-        setup.innerText = data.setup;
-        punchline.innerText = data.punchline;
-        type.innerText = data.type;
+        // this is the first way..... 
 
-        jokeDiv.append(id,setup,punchline,type);
+        // id.innerText = data.id;
+        // setup.innerText = data.setup;
+        // punchline.innerText = data.punchline;
+        // type.innerText = data.type;
+
+        // jokeDiv.append(id,setup,punchline,type);
+
+        // this is the second way..... 
+        Array.from(joke)
     }
     catch(err){
         console.log('🚀 ~ err:', err);
