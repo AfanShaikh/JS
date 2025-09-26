@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Movies-Cafe</title>
+    <style>
+            * { 
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      padding: 20px;
+    }
+
+    #mainContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      align-items: stretch;
+    }
+
+    .card_div {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      max-width: 300px;
+    }
+
+    .card_div:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card_div > img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .card_div h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      margin: 8px 0;
+    }
+
+    .grid_div p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.4;
+      margin: 4px 0;
+    }
+    </style>
+</head>
+<body onload="Movies_Ftech()">
+    <div id="mainContainer"></div>
+</body>
+<script>
+    const Api_Key = "690fb79";
+
+    const Movies_Ftech = async () => {
+        let queries = [
+            "Iron Man", "Iron Man 2", "Iron Man 3", "The Avengers", "Avengers Age of Ultron",
+            "Avengers Infinity War", "Avengers Endgame", "Thor", "Thor The Dark World", "Thor Ragnarok",
+            "Thor Love and Thunder", "Captain America The First Avenger", "Captain America The Winter Soldier",
+            "Captain America Civil War", "Black Panther", "Black Panther Wakanda Forever",
+            "Doctor Strange", "Doctor Strange Multiverse of Madness", "Ant-Man", "Ant-Man and the Wasp",
+            "Ant-Man Quantumania", "Guardians of the Galaxy", "Guardians of the Galaxy Vol. 2",
+            "Guardians of the Galaxy Vol. 3", "Spider-Man Homecoming", "Spider-Man Far From Home",
+            "Spider-Man No Way Home", "The Amazing Spider-Man", "The Amazing Spider-Man 2",
+            "Spider-Man Into the Spider-Verse", "Spider-Man Across the Spider-Verse",
+            "Venom", "Venom Let There Be Carnage", "Morbius", "Eternals", "Shang-Chi",
+            "Deadpool", "Deadpool 2", "Logan", "X-Men", "X2", "X-Men The Last Stand",
+            "X-Men First Class", "X-Men Days of Future Past", "X-Men Apocalypse", "The Wolverine",
+            "Justice League", "Zack Snyder Justice League", "Man of Steel", "Batman v Superman",
+            "The Dark Knight", "The Dark Knight Rises", "Batman Begins", "The Batman",
+            "Joker", "Suicide Squad", "The Suicide Squad", "Wonder Woman", "Wonder Woman 1984",
+            "Aquaman", "Shazam", "Shazam Fury of the Gods", "Black Adam", "Flash", "Blue Beetle",
+            "Inception", "Interstellar", "Tenet", "The Prestige", "Dunkirk", "Oppenheimer",
+            "Memento", "The Matrix", "The Matrix Reloaded", "The Matrix Revolutions",
+            "The Matrix Resurrections", "John Wick", "John Wick Chapter 2", "John Wick Chapter 3",
+            "John Wick Chapter 4", "Mission Impossible", "Mission Impossible Fallout",
+            "Mission Impossible Dead Reckoning", "Top Gun", "Top Gun Maverick",
+            "Edge of Tomorrow", "Minority Report", "War of the Worlds", "Oblivion",
+            "Tron Legacy", "Pacific Rim", "Pacific Rim Uprising", "Godzilla", "Godzilla King of Monsters",
+            "Godzilla vs Kong", "Kong Skull Island", "The Meg", "The Meg 2", "Rampage",
+            "Independence Day", "Independence Day Resurgence", "The Day After Tomorrow",
+            "2012", "San Andreas", "Skyscraper", "Geostorm", "Armageddon", "Deep Impact",
+            "Avatar", "Avatar The Way of Water", "Titanic",
+            "The Conjuring", "The Conjuring 2", "The Conjuring The Devil Made Me Do It",
+            "Annabelle", "Annabelle Creation", "Annabelle Comes Home", "The Nun", "The Nun 2",
+            "Insidious", "Insidious Chapter 2", "Insidious Chapter 3", "Insidious The Last Key",
+            "Insidious The Red Door", "Sinister", "Sinister 2", "Paranormal Activity",
+            "Paranormal Activity 2", "Paranormal Activity 3", "Paranormal Activity 4",
+            "The Marked Ones", "The Ghost Dimension", "The Ring", "The Ring 2", "Rings",
+            "It", "It Chapter Two", "Pet Sematary", "Doctor Sleep", "The Shining", "The Mist",
+            "1408", "A Quiet Place", "A Quiet Place Part II", "Bird Box", "The Silence",
+            "Smile", "The Boogeyman", "Evil Dead", "Evil Dead Rise", "Army of Darkness",
+            "Tumbbad", "Stree", "Bhoot", "Bulbbul",
+            "Stranger Things", "Dark", "Wednesday", "Breaking Bad", "Better Call Saul",
+            "Game of Thrones", "House of the Dragon", "The Last of Us", "The Witcher",
+            "Money Heist", "Money Heist Korea", "Narcos", "Narcos Mexico",
+            "Peaky Blinders", "The Boys", "Gen V", "Invincible", "The Umbrella Academy",
+            "Squid Game", "All of Us Are Dead", "Sweet Home", "Kingdom",
+            "The Crown", "You", "Lucifer", "Shadow and Bone", "Sandman",
+            "Manifest", "Dark Desire", "Sacred Games", "Delhi Crime", "Mirzapur",
+            "Paatal Lok", "Family Man", "Asur", "Kota Factory", "Aspirants",
+            "Hostel Daze", "Panchayat", "Made in Heaven",
+            "3 Idiots", "PK", "Dangal", "Lagaan", "Taare Zameen Par", "Ghajini",
+            "Zindagi Na Milegi Dobara", "Dil Chahta Hai", "Kal Ho Naa Ho", "Kabhi Khushi Kabhie Gham",
+            "Kabir Singh", "Jab We Met", "Yeh Jawaani Hai Deewani", "Barfi", "Chhichhore",
+            "Super 30", "12th Fail", "Uri The Surgical Strike", "Raazi", "Drishyam",
+            "Drishyam 2", "Andhadhun", "Badhaai Ho", "Pink", "Article 15", "Airlift",
+            "Rustom", "Kesari", "Bhool Bhulaiyaa", "Bhool Bhulaiyaa 2", "Stree",
+            "Bhediya", "Mimi", "Gangubai Kathiawadi", "RRR", "KGF", "KGF 2",
+            "Pushpa The Rise", "Pushpa The Rule", "Bahubali", "Bahubali 2", "Chhapaak",
+            "Gully Boy", "Rockstar", "Tamasha", "Fighter", "War", "Pathaan",
+            "Jawan", "Dunki", "Animal", "Chhaava", "Ragini MMS", "Go Goa Gone"
+        ];
+
+        const randomQuery = queries[Math.floor(Math.random() * queries.length)];
+        console.log('🚀 ~ randomQuery:', randomQuery);
+
+        const API = `http://www.omdbapi.com/?s=${encodeURIComponent(randomQuery)}&apikey=${Api_Key}`;
+
+        // function declaration (hoisted) — safe to call from below
+        function appendsFunc(result) {
+            const mainDiv = document.getElementById('mainContainer');
+            mainDiv.innerHTML = '';
+
+            if (!result || !result.Search) {
+                mainDiv.innerHTML = "<p>No movies found</p>";
+                return;
+            }
+
+            result.Search.forEach((movie) => {
+                const cardDiv = document.createElement('div');
+                const img = document.createElement('img');
+
+                const nameDiv = document.createElement('div');
+                const title = document.createElement('h3');
+
+                const gridDiv = document.createElement('div');
+                const year = document.createElement('p');
+                const imdb = document.createElement('p');
+                const type = document.createElement('p');
+
+                cardDiv.className = 'card_div';
+                nameDiv.className = 'name_div';
+                gridDiv.className = 'grid_div';
+
+                img.src = movie.Poster;
+                img.alt = movie.Title || 'poster';
+                title.innerText = `Title: ${movie.Title}`;
+                year.innerText = `Year: ${movie.Year}`;
+                imdb.innerText = `Imdb ID: ${movie.imdbID}`;
+                type.innerText = `Type: ${movie.Type}`;
+
+                gridDiv.append(year, imdb, type);
+                nameDiv.append(title, gridDiv);
+                cardDiv.append(img, nameDiv);
+                mainDiv.append(cardDiv);
+            });
+        }
+
+        try {
+            const res = await fetch(API);
+            const data = await res.json();
+            appendsFunc(data);
+        } catch (err) {
+            console.log('🚀 ~ err:', err);
+            const mainDiv = document.getElementById('mainContainer');
+            mainDiv.innerHTML = '<p>Error fetching movies</p>';
+        }
+    };
+</script>
+</html>
