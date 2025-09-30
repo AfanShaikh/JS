@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  min-height: 100vh;
+}
+
+header {
+  background-color: #3a3a3a;
+  padding: 10px 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.right img:first-child {
+  height: 40px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 40px;
+}
+
+#search-input {
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+    height: 100%;
+    width: 250px;
+}
+
+.search-container img {
+    background-color: #3aa39f;
+    cursor: pointer;
+    height: 100%;
+    width: 45px;
+    border-radius: 0 20px 20px 0;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.left a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.left a:hover {
+  color: #3aa39f;
+}
+
+#mainContainer {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 25px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card-Div {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.3s;
+}
+
+.card-Div:hover {
+  transform: translateY(-5px);
+}
+
+.card-Div img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.card-Div h4 {
+  color: #333;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.card-Div p {
+  color: #666;
+  font-size: 0.9em;
+  line-height: 1.4;
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}

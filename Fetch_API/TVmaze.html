@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV-Shows</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        #mainContainer{
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 10px;
-            /* justify-items: center;
-            align-content: center; */
-        }
-    </style>
+    <link rel="stylesheet" href="./TVmaze.css">
 </head>
 <body>
-    <h1>Tv-Shows</h1>
-    <input onchange="api_fetch()" type="text" placeholder="Enter Your Show..." id="search-input">
+    <header>
+        <nav>
+            <section class="right">
+            <img src="./utils/tvm-header-logo.png" alt="Logo">
+            <div class="search-container">
+            <input onchange="api_fetch()" type="text" placeholder="Search" id="search-input">
+            <img src="./utils/search (1).png" alt="icon"/>
+            </div>
+            </section>
+            <section class="left">
+                <a href="#" class="nav-link">Login</a>
+                <a href="#" class="nav-link">Register</a>
+            </section>
+        </nav>
+    </header>
+    <!-- <input onchange="api_fetch()" type="text" placeholder="Enter Your Show..." id="search-input"> -->
     <div id="mainContainer"></div>
 </body>
 <script src="./TVmaze.js"></script>

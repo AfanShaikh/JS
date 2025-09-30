@@ -19,26 +19,27 @@ const api_fetch = async () =>{
 const Render_UI = (infoData) =>{
     console.log('🚀 ~ infoData:', infoData);
     const mainDiv = document.getElementById("mainContainer");
-    infoData.forEach((els) => {
-        els = els.show;
-        let cardDiv = document.createElement("div");
-        let id = document.createElement("h4");
-        let img = document.createElement("img");
-        let name = document.createElement("h4");
-        let language = document.createElement("h4");
-        let genres = document.createElement("h4");
-        let runtime = document.createElement("h4");
-        let rating = document.createElement("h4");
-        let summary = document.createElement("p");
+    mainDiv.innerHTML = ''; 
+    infoData.forEach((element) => {
+        element = element.show;
+        const cardDiv = document.createElement("div");
+        const id = document.createElement("h4");
+        const img = document.createElement("img");
+        const name = document.createElement("h4");
+        const language = document.createElement("h4");
+        const genres = document.createElement("h4");
+        const runtime = document.createElement("h4");
+        const rating = document.createElement("h4");
+        const summary = document.createElement("p");
 
-        id.innerText = `id ${els.id}`;
-        img.src = els.image.medium;
-        name.innerText = `name ${els.name}`;
-        language.innerText = `language ${els.language}`;
-        genres.innerText = `genres ${els.genres}`;
-        runtime.innerText = `runtime ${els.runtime}`;
-        rating.innerText = `rating ${els.rating.average}`;
-        summary.innerHTML = `summary ${els.summary}`;
+        id.innerText = `id ${element.id}`;
+        img.src = element.image.original;
+        name.innerText = `name ${element.name}`;
+        language.innerText = `language ${element.language}`;
+        genres.innerText = `genres ${element.genres}`;
+        runtime.innerText = `runtime ${element.runtime}`;
+        rating.innerText = `rating ${element.rating.average}`;
+        summary.innerHTML = `summary ${element.summary}`;
 
         //class name 
         cardDiv.className = "card-Div"
