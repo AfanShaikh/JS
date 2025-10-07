@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prac</title>
+</head>
+<body>
+    <div id="value"></div>
+    <div id="value-sum"></div>
+    <div id="value-first"></div>
+</body>
+<script type="module">
+    import home from "../js/Prac.js";
+    import {sum} from "../js/Prac1.js";
+
+    document.querySelector("#value").innerHTML = home(7,4);
+    document.querySelector("#value-sum").innerHTML = sum(7,4);
+    document.querySelector("#value-first").innerHTML= sum(18,19)
+</script>
+</html>
