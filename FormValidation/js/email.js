@@ -35,7 +35,7 @@ function myFunction(e) {
       if (!hasUpperCase) {
         document.getElementById("Message_pass").innerHTML =
           "Password must inclued at least one UpperCase Letter";
-        return false;       
+        return false;
       } else if (!hasLowerCase) {
         document.getElementById("Messsage_pass").innerHTML =
           "Password must inclued at least one LowerCase Letter";
