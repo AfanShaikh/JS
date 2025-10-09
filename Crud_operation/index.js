@@ -33,14 +33,35 @@ const read_Todo = () => {
 
         input_is_completes.type = "checkbox";
 
-        todoDiv.className = "todo_divs"
+        todoDiv.className = "todo_divs";
 
         btn_delete.innerText = "delete";
         btn_delete.className = "btn_isDelete";
+        // Delete Functionality
+        btn_delete.addEventListener("click",() =>{
+            deleteFunction(els.id);
+        });
+
         btn_edits.innerText = "edit";
         btn_edits.className = "btn_isEdit";
+        
 
         todoDiv.append(input_is_completes,textTodo,btn_edits,btn_delete);
         mainDiv.append(todoDiv);
     });
+}
+
+const deleteFunction = (id) =>{
+    const Del = store.filter((els) => els.id !== id);
+
+    store = Del;
+    localStorage.setItem("todos", JSON.stringify(store));
+    read_Todo();
+
+    console.log('🚀 ~ Del:', Del);
+}
+
+
+window.onload = () =>{
+    read_Todo();
 }
