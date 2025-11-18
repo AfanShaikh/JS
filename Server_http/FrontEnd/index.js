@@ -1,5 +1,5 @@
 const btn_Add = document.querySelector(".add_btn");
-// let store = JSON.parse(localStorage.getItem("todos")) || [];
+let store = JSON.parse(localStorage.getItem("todos")) || [];
 
 const Api = "http://localhost:3000/todo"
 
